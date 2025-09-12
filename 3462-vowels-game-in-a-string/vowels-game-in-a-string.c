@@ -9,5 +9,19 @@ bool doesAliceWin(char* s) {
     }
 
 
-    return (count%2 == 1)||(count%2 == 0 && count > 0);
+    return count;
 }
+
+/*
+bool doesAliceWin(char* s) {
+    int count = 0;
+    int len = strlen(s);
+    for(int i=0; i<len; i++){
+        switch(s[i]){
+            case 'a':case 'e':case 'i':case 'o':case 'u':count++;
+            default: break;
+        }
+    }
+    return count;
+}
+*/
