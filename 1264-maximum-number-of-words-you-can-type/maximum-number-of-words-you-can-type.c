@@ -1,32 +1,28 @@
 
-int canBeTypedWords(char* text, char* brokenLetters) {
-    int m = strlen(brokenLetters);
-    int canType = 1;
+int canBeTypedWords(char* text, char* broken) {
+    int m = strlen(broken);
     int wordCount = 0;
     
-    for (int i = 0; text[i] != '\0'; i++) {
-        // Check if current character is space (end of word)
-        if (text[i] == ' ') {
-            if (canType) {
-                wordCount++;
+    char s[26];
+
+    for(int i = 0; i < m; i++){
+        s[broken[i] - 'a'] = 1;
+    }
+    int result = 0;
+    bool canType = 1;
+    for(int i = 0; text[i] != '\0'; i++){
+        if(text[i] == ' '){
+            if(canType){
+                result++;
             }
-            canType = 1; // Reset for next word
-            continue;
+            canType = true;
         }
-        
-        // Check if current character is a broken letter
-        for (int j = 0; j < m; j++) {
-            if (text[i] == brokenLetters[j]) {
-                canType = 0; // Mark this word as untypable
-                break;
-            }
+        else if(s[text[i]-'a'] == true){
+            canType = 0;
         }
     }
-    
-    // Don't forget the last word
-    if (canType) {
-        wordCount++;
+    if(canType){
+        result++;
     }
-    
-    return wordCount;
+    return result;
 }
