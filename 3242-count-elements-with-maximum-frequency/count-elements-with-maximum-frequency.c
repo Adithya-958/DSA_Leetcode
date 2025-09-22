@@ -1,5 +1,5 @@
 int maxFrequencyElements(int* nums, int numsSize) {
-    int s[10001] = {0};
+    int s[101] = {0};
     int n = numsSize;
     for(int i =0; i < n; i++){
             s[nums[i]]++;
