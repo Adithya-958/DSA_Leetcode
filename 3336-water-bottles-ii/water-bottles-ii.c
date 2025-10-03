@@ -1,8 +1,8 @@
-int maxBottlesDrunk(int numBottles, int x) {
-            int ans = numBottles;
-        while (numBottles >= x) {
-            numBottles -= x - 1;
-             x++; ans++;
-        }
-        return ans;
-    }
+int maxBottlesDrunk(int n, int e) {
+    int count = n;
+    while(n>=e){
+        n=n-e+1;
+        e++;
+        count++;
+    }return count++;
+}
