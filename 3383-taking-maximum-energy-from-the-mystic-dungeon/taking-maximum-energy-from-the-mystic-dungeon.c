@@ -1,11 +1,16 @@
-int maximumEnergy(int* energy, int energySize, int k) {
-        int dp[energySize];
-    int result = INT_MIN;
-    for (int i = energySize - 1; i >= 0; --i) {
-        int next = (i + k < energySize) ? dp[i + k] : 0;
-        dp[i] = energy[i] + next;
-        if (dp[i] > result)
-            result = dp[i];
-    }
-    return result;
+int maximumEnergy(int* a, int n, int k) {
+    int dp[n];
+    int max = INT_MIN;
+    for(int i = n-1; i >= 0; i--){
+        int sum;
+        if(i+k >= n){
+            dp[i] = a[i];
+        }
+        else if(i+k < n){
+            dp[i] = a[i]+dp[i+k];
+        }
+        if(dp[i] > max){
+            max = dp[i];
+        }
+    }return max;
 }
