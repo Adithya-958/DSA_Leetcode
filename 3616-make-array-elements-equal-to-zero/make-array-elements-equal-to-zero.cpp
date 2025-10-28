@@ -22,18 +22,34 @@ public:
     }
     int countValidSelections(vector<int>& a) {
         int n = a.size();
-        int count;
-
-        int dir = 1,ans =0;
+        // int dir = 1,ans =0;
+        // for(int i = 0; i < n; i++){
+        //     if(a[i] == 0){
+        //         if(check(a,i,1,n)){printf("1");
+        //             ans++;
+        //             }
+        //         if(check(a,i,-1,n)){printf("1");
+        //             ans++;
+        //             }
+        //     }
+        int ans = 0;
+        int csum = 0;
+        int total_sum = 0, rem_sum = 0;
+        for(int i = 0; i < n; i++)  
+            total_sum += a[i];
         for(int i = 0; i < n; i++){
+            csum += a[i];
             if(a[i] == 0){
-                if(check(a,i,1,n)){printf("1");
-                    ans++;
-                    }
-                if(check(a,i,-1,n)){printf("1");
-                    ans++;
-                    }
+                rem_sum = total_sum-csum;
+            if(rem_sum == csum)
+                ans+=2;
+            if(abs(rem_sum - csum) == 1 )
+               ans+=1;
             }
+            
+            
         }return ans;
-    }
+        }
+        
+    
 };
