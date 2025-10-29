@@ -1,10 +1,9 @@
 int smallestNumber(int n) {
     int x,count = 0;
-    while(n){
-        int rem = n%2;
-        n = n/2;
-        count++;printf("1");
+ int n1=0;
+    while(n>0){
+        n = n>>1;
+        count++;
     }
-    printf("%d",count);
-    return pow(2,count) - 1;
+    return (1<<count)-1;
 }
