@@ -8,13 +8,8 @@ public:
         for(int i = 0; i < n - k + 1; i++) {
             unordered_map<int, int> freq;
             // Min-heap to store (frequency, value) pairs with custom comparator
-            auto comp = [](const p& a, const p& b) {
-                if(a.first == b.first) {
-                    return a.second > b.second;  // If freq tied, larger value should stay
-                }
-                return a.first > b.first;  // Lower frequency should be at top
-            };
-            priority_queue<p, vector<p>, decltype(comp)> pq(comp);
+      
+            priority_queue<p, vector<p>, greater<p>> pq;
             
             // Count frequencies in current window
             for(int j = i; j <= i + k - 1; j++) {
