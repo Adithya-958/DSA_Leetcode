@@ -1,14 +1,24 @@
 class Solution:
     def gcdOfStrings(self, str1: str, str2: str) -> str:
+        # Base Case 1: If they aren't even starting with the same pattern, 
+        # there's no common divisor.
+        # if str1 + str2 != str2 + str1:
+        #     return ""
+        
+        # # Base Case 2: If the strings are identical, that's our GCD!
+        # if str1 == str2:
+        #     return str1
+        
+        # # Recursive Step: "Subtract" the shorter string from the longer one.
+        # # If str1 is longer, remove the matching part and keep going.
+        # if len(str1) > len(str2):
+        #     return self.gcdOfStrings(str1[len(str2):], str2)
+        
+        # # If str2 is longer, remove the matching part and keep going.
+        # return self.gcdOfStrings(str1, str2[len(str1):])
 
-        if str1 + str2 != str2 + str1:
-            return ""
-
-        def gcd(len1, len2):
-            min_val = min(len1, len2)
-            for i in range(min_val, 0, -1):
-                if len1 % i == 0 and len2 % i == 0:
-                    return i
-            return 1
-
-        return str1[:gcd(len(str1), len(str2))]
+        a,b = len(str1),len(str2)
+        if(str1+str2 == str2+str1):
+            ans = gcd(len(str1), len(str2))
+            return str2[:ans]
+        else: return ""
