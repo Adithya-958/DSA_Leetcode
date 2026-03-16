@@ -14,10 +14,7 @@ class Solution:
         for i in range(len(nums)):
             total += nums[i]
         for i in range(len(nums)):
-            j,left = 0,0
-            while(j < i):
-                left += nums[j]
-                j += 1
             if(left == (total - left- nums[i])):
                 return i
+            left += nums[i]
         return -1
