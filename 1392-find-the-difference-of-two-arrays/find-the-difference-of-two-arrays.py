@@ -26,6 +26,15 @@ class Solution:
         # return answer 
  # m*n, m+n
  # m+n, m+n
+        k = set()
+        p = set()
+        for i in range(len(nums1)):
+            if nums1[i] not in nums2:
+                    k.add(nums1[i])
+        for i in range(len(nums2)):
+            if nums2[i] not in nums1:
+                    p.add(nums2[i])
+        return [list(k),list(p)] #m*n
         k = []
         p = []
         for i in range(len(nums1)):
@@ -36,5 +45,5 @@ class Solution:
             if nums2[i] not in nums1:
                 if nums2[i] not in p:
                     p.append(nums2[i])
-        return [k,p]
+        #return [k,p] # m*n*k m+n
         
