@@ -14,16 +14,27 @@ class Solution:
         # res1 = self.isin(nums1, nums2)
         # res2 = self.isin(nums2,nums1)
         # return [res1,res2]
-        res,temp = [],[]
+        # set1 = set(nums1)
+        # set2 = set(nums2)
+        # answer = [[],[]]
+        # for i in set1:
+        #     if i not in set2:
+        #         answer[0].append(i)
+        # for i in set2:
+        #     if i not in set1:
+        #         answer[1].append(i)
+        # return answer 
+ # m*n, m+n
+ # m+n, m+n
+        k = []
+        p = []
         for i in range(len(nums1)):
-            if nums1[i] not in nums2 and nums1[i] not in temp:
-                temp.append(nums1[i])
-        res.append(temp)
-        temp = []
+            if nums1[i] not in nums2:
+                if nums1[i] not in k:
+                    k.append(nums1[i])
         for i in range(len(nums2)):
-            if nums2[i] not in nums1 and nums2[i] not in temp:
-                temp.append(nums2[i])
-        res.append(temp)
-        return res
-
+            if nums2[i] not in nums1:
+                if nums2[i] not in p:
+                    p.append(nums2[i])
+        return [k,p]
         
