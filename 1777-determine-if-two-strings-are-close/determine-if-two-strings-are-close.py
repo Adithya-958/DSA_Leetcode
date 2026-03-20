@@ -1,23 +1,20 @@
 class Solution:
-    def closeStrings(self, s1: str, s2: str) -> bool:
-        m = len(s1)
-        n = len(s2)
-        str1 = list(s1)
-        str2 = list(s2)
-        if(m != n):
+    def closeStrings(self, word1: str, word2: str) -> bool:
+        if(len(word1) != len(word2)):
             return False
-        l1 = set()
-        l2 = set()
+        s1 = set(word1)
+        m = len(word1)
+        s2 = set(word2)
         freq1 = [0]*26
         freq2 = [0]*26
+        a1 = list(word1)
+        a2 = list(word2)
         for i in range(m):
-            l1.add(str1[i])
-            l2.add(str2[i])
-            freq1[ord(str1[i]) - ord('a')] += 1
-            freq2[ord(str2[i]) - ord('a')] += 1
+            freq1[ord(a1[i]) - ord('a')] += 1
+            freq2[ord(a2[i]) - ord('a')] += 1
         freq1.sort()
         freq2.sort()
-        if(l1 == l2 and freq1 == freq2):
+        print(freq1,freq2)
+        if (s1 == s2 and freq1 == freq2):
             return True
-        else:
-            return False
+        return False
