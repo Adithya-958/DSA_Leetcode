@@ -1,23 +1,18 @@
 class Solution:
     def decodeString(self, s: str) -> str:
-        self.i = 0
-        return self.decode(s)
-    def decode(self, s: str) -> str:
-        res, num = "", 0
-        while self.i < len(s):
-            c = s[self.i]
-            if c.isdigit():
-                num = num * 10 + int(c)
-                self.i += 1
-            elif c == '[':
-                self.i += 1
-                inner = self.decode(s)
-                res += inner * num
+        str_stack, num_stack = [], []
+        sub = ''
+        num = 0
+        for i,v in enumerate(s):
+            if v.isnumeric():
+                num  = num * 10 + int(v)
+            elif v == '[':
+                num_stack.append(num)
                 num = 0
-            elif c == ']':
-                self.i += 1
-                return res
+                str_stack.append(sub)
+                sub = ''
+            elif v == ']':
+                sub = str_stack.pop()+(sub*num_stack.pop())
             else:
-                res += c
-                self.i += 1
-        return res
+                sub += v
+        return sub
