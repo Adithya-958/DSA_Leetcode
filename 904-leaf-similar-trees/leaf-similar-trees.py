@@ -5,19 +5,19 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    def fun(self,root, leaf):
+        self.root = root
+        if not self.root:
+            return
+        if not root.left and not root.right:
+            leaf.append(root.val)
+            return
+        self.fun(root.left, leaf)
+        self.fun(root.right, leaf)
+
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
-        left_leaves = []
-        right_leaves = []
-
-        def helper(node, leaves):
-            if not node:
-                return
-            if not node.left and not node.right:
-                leaves.append(node.val)
-            helper(node.left, leaves)
-            helper(node.right, leaves)
-
-        helper(root1, left_leaves)
-        helper(root2, right_leaves)
-
-        return left_leaves == right_leaves 
+        leaf1 = []
+        leaf2 = []
+        root1 = self.fun(root1, leaf1)
+        root2 = self.fun(root2, leaf2)
+        return leaf1 == leaf2
