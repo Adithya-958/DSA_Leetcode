@@ -6,9 +6,7 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def goodNodes(self, root: TreeNode) -> int:
-        # helper dfs returns count of good nodes from this node down
-        def dfs(node, max_so_far):
+    def dfs(self, node, max_so_far):
             if not node:
                 return 0  # base case: null node, 0 good nodes
 
@@ -19,9 +17,12 @@ class Solution:
             new_max = max(max_so_far, node.val)
 
             # count good nodes in left and right subtrees
-            count += dfs(node.left, new_max)
-            count += dfs(node.right, new_max)
+            count += self.dfs(node.left, new_max)
+            count += self.dfs(node.right, new_max)
 
             return count
+    def goodNodes(self, root: TreeNode) -> int:
+        # helper dfs returns count of good nodes from this node down
+        
 
-        return dfs(root, root.val)
+        return self.dfs(root, root.val)
